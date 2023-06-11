@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const discord = require('discord.js')
 const dotenv = require('dotenv')
 const fs = require('fs')
@@ -10,7 +9,7 @@ const Client = new discord.Client({
     discord.GatewayIntentBits.GuildMembers,
     discord.GatewayIntentBits.GuildMessages,
     discord.GatewayIntentBits.GuildMessageReactions,
-    discord.GatewayIntentBits.GuildVoiceStates
+    discord.GatewayIntentBits.MessageContent
   ],
   allowedMentions: { parse: ['users', 'roles'], repliedUser: true }
 })
