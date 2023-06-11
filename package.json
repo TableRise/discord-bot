@@ -4,14 +4,14 @@
   "description": "Moderation bot for TableRise Discord Guild",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "lint-fix": "eslint .",
+    "lint": "eslint",
+    "lint-fix": "eslint --fix",
     "dev": "node --trace-warnings index.js",
     "start": "node index.js",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint ."
+    "*.{js,jsx}": "eslint"
   },
   "author": "Ash Trindade",
   "license": "MIT",
