@@ -1,7 +1,6 @@
 const discord = require('discord.js')
 const dotenv = require('dotenv')
 const fs = require('fs')
-const mongoose = require('mongoose')
 
 const Client = new discord.Client({
   intents: [
@@ -64,12 +63,5 @@ fs.readdirSync('./src/commands/').forEach((dir) => {
     })
   })
 })
-
-mongoose
-  .connect(process.env.DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(console.log('[DATABASE] 🟢 Connected!'))
 
 Client.login(process.env.DISCORD_TOKEN)
