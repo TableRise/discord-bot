@@ -1,15 +1,19 @@
-const Log = require('../../models/log')
+const { time } = require('discord.js')
+const Client = require('../../../index')
+const enumChannel = require('../../enums/enumChannel')
 
 async function createLog(inter) {
   try {
-    const newLog = new Log({
-      commandName: inter.commandName,
-      commandId: inter.commandId,
-      userName: inter.user.username + '#' + inter.user.discriminator,
-      userId: inter.user.id
-    })
+    const commandName = inter.commandName
+    const userName = inter.user.username
+    const userId = inter.user.id
+    const date = new Date()
 
-    await newLog.save()
+    const message = `> ### :memo: Commands Log \n> **Command**: ${commandName} \n> **Username**: ${userName} \n> **ID**: ${userId} \n> **Date**: ${time(
+      date
+    )}`
+
+    await Client.Client.channels.cache.get(enumChannel.LOG).send(message)
   } catch (error) {
     console.log(error)
   }
