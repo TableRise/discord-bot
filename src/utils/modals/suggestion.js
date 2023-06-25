@@ -1,7 +1,6 @@
 const { EmbedBuilder, InteractionType } = require('discord.js')
 const Client = require('../../../index')
-const dotenv = require('dotenv')
-dotenv.config()
+const enumChannel = require('../../enums/enumChannel')
 
 Client.on('interactionCreate', async (inter) => {
   try {
@@ -15,7 +14,6 @@ Client.on('interactionCreate', async (inter) => {
 
       const title = inter.fields.getTextInputValue('sugestInput')
       const description = inter.fields.getTextInputValue('descricaoInput')
-      const channel = process.env.SUGESTOES_CHANNEL
 
       const embed = new EmbedBuilder()
         .setColor('Green')
@@ -26,7 +24,9 @@ Client.on('interactionCreate', async (inter) => {
           { name: 'Descrição:', value: `→ ${description}` }
         ])
 
-      await Client.channels.cache.get(channel).send({ embeds: [embed] })
+      await Client.channels.cache
+        .get(enumChannel.SUGGESTION)
+        .send({ embeds: [embed] })
     }
   } catch (err) {
     console.log(err)
