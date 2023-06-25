@@ -1,0 +1,8 @@
+const channel = {
+  BUG: '1122292745084608683',
+  LOG: '1122292629137268886',
+  SUGGESTION: '1122292881416269925',
+  SUPPORT: ''
+}
+
+module.exports = channel
