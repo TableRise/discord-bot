@@ -29,11 +29,15 @@ fs.readdirSync('./src/events/').forEach((dir) => {
     if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 event not found!')
 
     jsFiles.forEach((file) => {
-      let eventGet = require(`./src/events/${dir}/${file}`)
+      let event = require(`./src/events/${dir}/${file}`)
       console.log(`[EVENTS] 🟢 ${file} was loaded!`)
 
       try {
-        Client.events.set(eventGet.name, eventGet)
+        if (event.once) {
+          Client.once(event.name, (...args) => event.execute(...args))
+        } else {
+          Client.on(event.name, (...args) => event.execute(...args))
+        }
       } catch (err) {
         return console.log(err)
       }
