@@ -13,13 +13,13 @@ async function createCmd(Client) {
       description: '🛡 Envia uma mensagem',
       options: [
         {
-          name: 'canal',
+          name: 'channel',
           type: ApplicationCommandOptionType.Channel,
           description: 'Canal de destino.',
           required: true
         },
         {
-          name: 'texto',
+          name: 'text',
           type: ApplicationCommandOptionType.String,
           description: 'Insira a mensagem.',
           required: true
@@ -77,12 +77,6 @@ async function createCmd(Client) {
           type: ApplicationCommandOptionType.String,
           description: 'Adicionar um parágrafo.',
           required: false
-        },
-        {
-          name: 'add10',
-          type: ApplicationCommandOptionType.String,
-          description: 'Adicionar um parágrafo.',
-          required: false
         }
       ]
     },
@@ -91,7 +85,7 @@ async function createCmd(Client) {
       description: '🛡 Link usando markdown',
       options: [
         {
-          name: 'titulo',
+          name: 'title',
           type: ApplicationCommandOptionType.String,
           description: 'Adicione o texto alternativo',
           required: true
@@ -109,7 +103,7 @@ async function createCmd(Client) {
       description: '🛡 Envia uma imagem',
       options: [
         {
-          name: 'canal',
+          name: 'channel',
           type: ApplicationCommandOptionType.Channel,
           description: 'Canal de destino.',
           required: true
