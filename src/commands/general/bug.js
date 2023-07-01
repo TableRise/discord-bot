@@ -1,11 +1,8 @@
-const {
-  EmbedBuilder,
-  ModalBuilder,
-  TextInputBuilder,
-  TextInputStyle,
-  ActionRowBuilder
-} = require('discord.js')
+const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, InteractionType } = require('discord.js')
+const Client = require('../../../index')
 const createLog = require('../../utils/log/createLog')
+const createBug = require('../../utils/modal/bug')
+const replyError = require('../../utils/error/replyError')
 
 module.exports.run = async (inter) => {
   try {
@@ -22,9 +19,7 @@ module.exports.run = async (inter) => {
 
     const description = new TextInputBuilder()
       .setCustomId('bugDescription')
-      .setLabel(
-        'Descreva com detalhes: \n- Onde acontece? \n- Qual o comportamento esperado? \n- Como reproduzir?'
-      )
+      .setLabel('Descreva com detalhes')
       .setStyle(TextInputStyle.Paragraph)
       .setRequired(false)
 
@@ -34,16 +29,16 @@ module.exports.run = async (inter) => {
     modal.addComponents(titleRow, descriptionRow)
 
     await inter.showModal(modal)
-
     createLog(inter)
-  } catch (error) {
-    const erro = new EmbedBuilder()
-      .setColor('Yellow')
-      .setTitle('Oh não, ocorreu um erro!')
-      .setDescription('Caso isso persista, contate os desenvolvedores.')
 
-    await inter.editReply({ embeds: [erro] })
-    console.log(error)
+    Client.Client.on('interactionCreate', async (inter) => {
+      if (inter.type !== InteractionType.ModalSubmit) return
+      if (inter.customId === 'bug') {
+        createBug(inter)
+      }
+    })
+  } catch (error) {
+    replyError(inter, error)
   }
 }
 

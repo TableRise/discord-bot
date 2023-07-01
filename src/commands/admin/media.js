@@ -1,12 +1,13 @@
-const { EmbedBuilder, AttachmentBuilder } = require('discord.js')
+const { AttachmentBuilder } = require('discord.js')
 const { Client } = require('../../../index')
 const createLog = require('../../utils/log/createLog')
+const replyError = require('../../utils/error/replyError')
 
 module.exports.run = async (inter) => {
   try {
     const alt = inter.options.getString('alt')
     const img = inter.options.getString('img')
-    const channel = inter.options.getChannel('canal').id
+    const channel = inter.options.getChannel('channel').id
 
     const file = new AttachmentBuilder().setFile(img).setDescription(alt)
 
@@ -21,13 +22,7 @@ module.exports.run = async (inter) => {
 
     await createLog(inter)
   } catch (error) {
-    const erro = new EmbedBuilder()
-      .setColor('Yellow')
-      .setTitle('Oh não, ocorreu um erro!')
-      .setDescription('Caso isso persista, contate os desenvolvedores.')
-
-    await inter.editReply({ embeds: [erro] })
-    console.log(error)
+    replyError(inter, error)
   }
 }
 

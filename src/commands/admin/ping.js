@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require('discord.js')
 const createLog = require('../../utils/log/createLog')
+const replyError = require('../../utils/error/replyError')
 
 module.exports.run = async (inter) => {
   try {
@@ -11,13 +12,7 @@ module.exports.run = async (inter) => {
 
     await createLog(inter)
   } catch (error) {
-    const erro = new EmbedBuilder()
-      .setColor('Yellow')
-      .setTitle('Oh não, ocorreu um erro!')
-      .setDescription('Caso isso persista, contate os desenvolvedores.')
-
-    await inter.editReply({ embeds: [erro] })
-    console.log(error)
+    replyError(inter, error)
   }
 }
 
