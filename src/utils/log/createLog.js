@@ -9,9 +9,13 @@ async function createLog(inter) {
     const userId = inter.user.id
     const date = new Date()
 
-    const message = `> ### :memo: Commands Log \n> **Command**: ${commandName} \n> **Username**: ${userName} \n> **ID**: ${userId} \n> **Date**: ${time(
-      date
-    )}`
+    const message = `
+      > ### :memo: Command Log
+      > **Command**: ${commandName}
+      > **Username**: ${userName}
+      > **User ID**: ${userId}
+      > **Date**: ${time(date)}
+    `
 
     await Client.Client.channels.cache.get(enumChannel.LOG).send(message)
   } catch (error) {
