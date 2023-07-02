@@ -17,7 +17,7 @@ async function createSuggestion(inter) {
     const date = new Date()
 
     const message = `
-      > ### :bulb: new ${enumRole.SUGGESTION}
+      > ### :bulb: ${enumRole.SUGGESTION}
       > **Username**: ${userName}
       > **User ID**: ${userId}
       > **Title**: ${title}

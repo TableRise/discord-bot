@@ -9,7 +9,7 @@ async function createBug(inter) {
       content: '**Bug Reportado!**',
       ephemeral: true
     })
-    
+
     const title = inter.fields.getTextInputValue('bugTitle')
     const description = inter.fields.getTextInputValue('bugDescription')
     const userName = inter.user.username
@@ -17,7 +17,7 @@ async function createBug(inter) {
     const date = new Date()
 
     const message = `
-      > ### :lady_beetle: ${enumRole.BUG} Report
+      > ### :lady_beetle: ${enumRole.BUG}
       > **Username**: ${userName}
       > **User ID**: ${userId}
       > **Title**: ${title}

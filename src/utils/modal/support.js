@@ -18,7 +18,7 @@ async function createSupport(inter) {
     const date = new Date()
 
     const message = `
-      > ### :sos: ${enumRole.SUPPORT} Requested
+      > ### :sos: ${enumRole.SUPPORT}
       > **Username**: ${userName}
       > **User ID**: ${userId}
       > **Title**: ${title}
