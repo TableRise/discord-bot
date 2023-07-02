@@ -14,7 +14,7 @@ module.exports.run = async (inter) => {
         </sugestao:1122311300027011076> Enviar sugestões para o projeto.
       `)
 
-    await inter.reply({ embeds: [embed], ephemeral: true })
+    await inter.reply({ embeds: [embed] })
 
     await createLog(inter)
   } catch (error) {
