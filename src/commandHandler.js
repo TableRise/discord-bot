@@ -133,6 +133,10 @@ async function createCmd(Client) {
     {
       name: 'support',
       description: 'Solicitar ajuda do suporte'
+    },
+    {
+      name: 'info',
+      description: 'Informações sobre o bot'
     }
   ]
 
