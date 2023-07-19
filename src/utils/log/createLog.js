@@ -1,5 +1,5 @@
 const { time } = require('discord.js')
-const Client = require('../../../index')
+const { Client } = require('../../../index')
 const enumChannel = require('../../enums/enumChannel')
 
 async function createLog(inter) {
@@ -17,7 +17,7 @@ async function createLog(inter) {
       > **Date**: ${time(date)}
     `
 
-    await Client.Client.channels.cache.get(enumChannel.LOG).send(message)
+    await Client.channels.cache.get(enumChannel.LOG).send(message)
   } catch (error) {
     console.log(error)
   }
