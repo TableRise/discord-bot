@@ -1,5 +1,5 @@
 const { InteractionType, EmbedBuilder, Events } = require('discord.js')
-const Client = require('../../../index').Client
+const { Client } = require('../../../index')
 
 module.exports = {
   name: Events.InteractionCreate,
