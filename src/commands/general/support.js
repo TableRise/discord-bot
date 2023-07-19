@@ -1,5 +1,5 @@
 const { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, InteractionType } = require('discord.js')
-const Client = require('../../../index')
+const { Client } = require('../../../index')
 const createLog = require('../../utils/log/createLog')
 const createSupport = require('../../utils/modal/support')
 const replyError = require('../../utils/error/replyError')
@@ -31,7 +31,7 @@ module.exports.run = async (inter) => {
     await inter.showModal(modal)
     createLog(inter)
 
-    Client.Client.on('interactionCreate', async (inter) => {
+    Client.on('interactionCreate', async (inter) => {
       if (inter.type !== InteractionType.ModalSubmit) return
       if (inter.customId === 'support') {
         createSupport(inter)
