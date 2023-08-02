@@ -13,14 +13,9 @@ module.exports.run = async (inter) => {
       .setColor('DarkGrey')
       .setDescription(`[${title}](${url})`)
 
-    await Client.channels.cache
-      .get(channel)
-      .send({ content: '', embeds: [embed] })
+    await Client.channels.cache.get(channel).send({ content: '', embeds: [embed] })
 
-    await inter.reply({
-      content: `Mensagem enviada para o canal <#${channel}>!`,
-      ephemeral: true
-    })
+    await inter.reply({ content: `Mensagem enviada para o canal <#${channel}>!`, ephemeral: true })
 
     await createLog(inter)
   } catch (error) {

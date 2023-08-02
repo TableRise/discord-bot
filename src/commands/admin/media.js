@@ -11,14 +11,9 @@ module.exports.run = async (inter) => {
 
     const file = new AttachmentBuilder().setFile(img).setDescription(alt)
 
-    await Client.channels.cache
-      .get(channel)
-      .send({ content: '', files: [file] })
+    await Client.channels.cache.get(channel).send({ content: '', files: [file] })
 
-    await inter.reply({
-      content: `Imagem enviada para o canal <#${channel}>!`,
-      ephemeral: true
-    })
+    await inter.reply({ content: `Imagem enviada para o canal <#${channel}>!`, ephemeral: true })
 
     await createLog(inter)
   } catch (error) {
