@@ -26,14 +26,9 @@ module.exports.run = async (inter) => {
     if (!add8) { add8 = '' }
     if (!add9) { add9 = '' }
 
-    await Client.channels.cache.get(channel).send({
-      content: `${text} \n${add1} \n${add2} \n${add3} \n${add4} \n${add5} \n${add6} \n${add7} \n${add8} \n${add9}`
-    })
+    await Client.channels.cache.get(channel).send({ content: `${text} \n${add1} \n${add2} \n${add3} \n${add4} \n${add5} \n${add6} \n${add7} \n${add8} \n${add9}` })
 
-    await inter.reply({
-      content: `Mensagem enviada para o channel <#${channel}>!`,
-      ephemeral: true
-    })
+    await inter.reply({ content: `Mensagem enviada para o channel <#${channel}>!`, ephemeral: true })
 
     await createLog(inter)
   } catch (error) {
