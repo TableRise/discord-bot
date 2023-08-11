@@ -4,14 +4,11 @@
   "description": "Moderation bot for TableRise Discord Guild",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint",
-    "lint-fix": "eslint --fix",
+    "lint": "npx eslint . --ext .js --fix",
     "dev": "node --trace-warnings index.js",
     "start": "node index.js",
-    "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.{js,jsx}": "eslint"
+    "prepare": "husky install",
+    "check-dependencies": "node .\\scripts\\checkDependencies.js"
   },
   "author": "Ash Trindade",
   "license": "MIT",
@@ -21,8 +18,8 @@
     "fs": "0.0.1-security"
   },
   "devDependencies": {
+    "colors": "1.4.0",
     "eslint": "8.42.0",
-    "husky": "8.0.3",
-    "lint-staged": "13.2.2"
+    "husky": "8.0.3"
   }
 }

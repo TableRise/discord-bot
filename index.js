@@ -1,6 +1,8 @@
 const discord = require('discord.js')
 const dotenv = require('dotenv')
+const colors = require('colors')
 const fs = require('fs')
+const collectionLog = require('./src/utils/log/collectionLog')
 
 const Client = new discord.Client({
   intents: [
@@ -26,11 +28,11 @@ fs.readdirSync('./src/events/').forEach((dir) => {
     let jsFiles = fs
       .readdirSync(`./src/events/${dir}`)
       .filter((f) => f.split('.').pop() === 'js')
-    if (jsFiles.length <= 0) return console.log('[EVENTS] 🔴 event not found!')
+    if (jsFiles.length <= 0) return console.log(colors.red.bold('No event found!'))
 
     jsFiles.forEach((file) => {
       let event = require(`./src/events/${dir}/${file}`)
-      console.log(`[EVENTS] 🟢 ${file} was loaded!`)
+      collectionLog('Events', file)
 
       try {
         if (event.once) {
@@ -53,11 +55,11 @@ fs.readdirSync('./src/commands/').forEach((dir) => {
       .readdirSync(`./src/commands/${dir}`)
       .filter((f) => f.split('.').pop() === 'js')
     if (jsFiles.length <= 0)
-      return console.log('[COMMANDS] 🔴 Command not found!')
+      return console.log(colors.red.bold('No command found!'))
 
     jsFiles.forEach((file) => {
       let fileGet = require(`./src/commands/${dir}/${file}`)
-      console.log(`[COMMANDS] 🟢 ${file} was loaded!`)
+      collectionLog('Commands', file)
 
       try {
         Client.commands.set(fileGet.help.name, fileGet)

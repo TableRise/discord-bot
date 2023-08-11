@@ -1,5 +1,6 @@
 const { ActivityType, Events } = require('discord.js')
 const { createCmd, globalCmd } = require('../../commandHandler')
+const colors = require('colors')
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -13,6 +14,6 @@ module.exports = {
     })
     globalCmd(client)
     createCmd(client, process.env.GUILD_ID)
-    console.log(`${client.user.tag} is online! 🟢`)
+    console.log(colors.green.bold(`${client.user.tag} is online`))
   }
 }
