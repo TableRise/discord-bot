@@ -1,7 +1,7 @@
 const { time } = require('discord.js')
 const { Client } = require('../../../index')
-const enumChannel = require('../../enums/enumChannel')
-const enumRole = require('../../enums/enumRole')
+const { channelId } = require('../../enums/enumChannel')
+const { roleMention } = require('../../enums/enumRole')
 
 async function createBug(inter) {
   try {
@@ -17,7 +17,7 @@ async function createBug(inter) {
     const date = new Date()
 
     const message = `
-      > ### :lady_beetle: ${enumRole.BUG}
+      > ### :lady_beetle: ${roleMention.BUG}
       > **Username**: ${userName}
       > **User ID**: ${userId}
       > **Title**: ${title}
@@ -25,7 +25,7 @@ async function createBug(inter) {
       > **Date**: ${time(date)}
     `
 
-    await Client.channels.cache.get(enumChannel.BUG).send(message)
+    await Client.channels.cache.get(channelId.BUG).send(message)
   } catch (error) {
     console.log(error)
   }

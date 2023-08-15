@@ -1,7 +1,7 @@
 const { time } = require('discord.js')
 const { Client } = require('../../../index')
-const enumChannel = require('../../enums/enumChannel')
-const enumRole = require('../../enums/enumRole')
+const { channelId } = require('../../enums/enumChannel')
+const { roleMention } = require('../../enums/enumRole')
 
 async function createSupport(inter) {
   try {
@@ -18,7 +18,7 @@ async function createSupport(inter) {
     const date = new Date()
 
     const message = `
-      > ### :sos: ${enumRole.SUPPORT}
+      > ### :sos: ${roleMention.SUPPORT}
       > **Username**: ${userName}
       > **User ID**: ${userId}
       > **Title**: ${title}
@@ -26,7 +26,7 @@ async function createSupport(inter) {
       > **Date**: ${time(date)}
     `
 
-    await Client.channels.cache.get(enumChannel.SUPPORT).send(message)
+    await Client.channels.cache.get(channelId.SUPPORT).send(message)
   } catch (error) {
     console.log(error)
   }

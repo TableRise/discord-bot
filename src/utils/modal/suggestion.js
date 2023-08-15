@@ -1,7 +1,7 @@
 const { time } = require('discord.js')
 const { Client } = require('../../../index')
-const enumChannel = require('../../enums/enumChannel')
-const enumRole = require('../../enums/enumRole')
+const { channelId } = require('../../enums/enumChannel')
+const { roleMention } = require('../../enums/enumRole')
 
 async function createSuggestion(inter) {
   try {
@@ -17,7 +17,7 @@ async function createSuggestion(inter) {
     const date = new Date()
 
     const message = `
-      > ### :bulb: ${enumRole.SUGGESTION}
+      > ### :bulb: ${roleMention.SUGGESTION}
       > **Username**: ${userName}
       > **User ID**: ${userId}
       > **Title**: ${title}
@@ -25,7 +25,7 @@ async function createSuggestion(inter) {
       > **Date**: ${time(date)}
     `
 
-    await Client.channels.cache.get(enumChannel.SUGGESTION).send(message)
+    await Client.channels.cache.get(channelId.SUGGESTION).send(message)
   } catch (error) {
     console.log(error)
   }

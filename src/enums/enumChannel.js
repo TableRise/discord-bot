@@ -1,8 +1,15 @@
-const channel = {
+const channelId = {
   BUG: '1122292745084608683',
   LOG: '1122292629137268886',
   SUGGESTION: '1122292881416269925',
   SUPPORT: '1124754626705641723'
 }
 
-module.exports = channel
+const channelMention = {
+  BUG: '<#1122292745084608683>',
+  LOG: '<#1122292629137268886>',
+  SUGGESTION: '<#1122292881416269925>',
+  SUPPORT: '<#1124754626705641723>'
+}
+
+module.exports = { channelId, channelMention }
